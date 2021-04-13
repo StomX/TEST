@@ -1,9 +1,9 @@
 <template>
   <div>
-      <ul v-if="this.$store.state.news.length > 0">
+      <ul v-if="fetchedNews.length > 0">
           <!-- header -->
           <!-- // header -->
-          <li v-for="user in this.$store.state.news">
+          <li v-for="user in fetchedNews">
               <span v-text="user.title"></span>
           </li>
       </ul>
@@ -11,8 +11,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
+    computed: {
+        ...mapGetters([
+            'fetchedNews'
+        ])
+    },
     created() {
         this.$store.dispatch('FETCH_NEWS')
     }

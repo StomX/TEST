@@ -1,9 +1,9 @@
 <template>
   <div>
-      <ul v-if="this.$store.state.asks.length > 0">
+      <ul v-if="fetchedAsks.length > 0">
           <!-- header -->
           <!-- // header -->
-          <li v-for="ask in this.$store.state.asks">
+          <li v-for="ask in fetchedAsks">
               <span v-text="ask.title"></span>
           </li>
       </ul>
@@ -11,7 +11,14 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
+    computed: {
+        ...mapGetters([
+            'fetchedAsks'
+        ])
+    },
     created() {
         this.$store.dispatch('FETCH_ASKS')
     },

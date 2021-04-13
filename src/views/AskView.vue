@@ -1,27 +1,12 @@
 <template>
-  <div>
-      <ul v-if="fetchedAsks.length > 0">
-          <!-- header -->
-          <!-- // header -->
-          <li v-for="ask in fetchedAsks">
-              <span v-text="ask.title"></span>
-          </li>
-      </ul>
-  </div>
+    <list-item></list-item>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import ListItem from '../components/ListItem.vue'
 
 export default {
-    computed: {
-        ...mapGetters([
-            'fetchedAsks'
-        ])
-    },
-    created() {
-        this.$store.dispatch('FETCH_ASKS')
-    },
+	components: { ListItem }
 }
 </script>
 

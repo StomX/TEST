@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <toolbar></toolbar>
-    <router-view></router-view>
+    <transition name="page">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -63,5 +65,13 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+
+.page-enter, .page-leave-to {
+  opacity: 0;
 }
 </style>
